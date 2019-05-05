@@ -50,4 +50,4 @@ RUN \
 #####################################
 
 RUN mkdir -p /go/src/github.com/playground/interviews/intuit
-RUN mkdir -p /go/src/github.com/prophesional/playground
+RUN mkdir -p /go/src/github.com/prophesional/intuit

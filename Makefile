@@ -1,5 +1,5 @@
 ECR_REPO=514200551837.dkr.ecr.us-west-1.amazonaws.com/go-builders
-BUILDER_VERSION=0.1
+BUILDER_VERSION=0.2
 
 docker.test.intuit:
 	docker run  -v `pwd`:/go/src/github.com/prophesional/intuit \
@@ -12,7 +12,7 @@ docker.test.intuit:
 	-w /go/src/github.com/prophesional/intuit \
 	--entrypoint /bin/bash \
 	$(ECR_REPO):$(BUILDER_VERSION) \
-	-c " GO111MODULE=on PKG_CONFIG_PATH=/usr/local/lib/pkgconfig go test -v "
+	-c " GO111MODULE=off PKG_CONFIG_PATH=/usr/local/lib/pkgconfig go test -v "
 
 docker.build.playlist:
 # 	aws ecr get-login --registry-ids $(STREAMING_ECR_ID) --region $(STREAMING_ECR_REGION) --no-include-email | sh
