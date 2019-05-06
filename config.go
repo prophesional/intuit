@@ -18,10 +18,6 @@ import (
 
 var log *zap.Logger
 
-const (
-	DefaultMaxOpenConnections = 10
-)
-
 func init() {
 	log, _ = zap.NewProduction()
 

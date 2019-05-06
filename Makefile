@@ -16,7 +16,7 @@ docker.test.intuit:
 	-w /go/src/github.com/prophesional/intuit \
 	--entrypoint /bin/bash \
 	$(ECR_REPO):$(BUILDER_VERSION) \
-	-c "GOOS=linux GO111MODULE=on PKG_CONFIG_PATH=/usr/local/lib/pkgconfig go test -v "
+	-c "GOOS=linux GO111MODULE=on PKG_CONFIG_PATH=/usr/local/lib/pkgconfig go test "-coverprofile=c.out"  && go tool cover "-html=c.out" "
 
 docker.build.intuit:
 	docker run  -v $(path):/go/src/github.com/prophesional/intuit \

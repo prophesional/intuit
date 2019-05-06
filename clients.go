@@ -28,10 +28,6 @@ func (l *logger) logInfo(msg string) {
 	l.Info(msg)
 }
 
-type S3Client struct {
-
-}
-
 // SQLClient connects to the DB to perform operations
 type SQLClient struct {
 	*sql.DB
@@ -109,8 +105,8 @@ func NewLocalSqlClientWithFile(dbpath string, schemaFile string) (*SQLClient, er
 	return NewLocalSqlClient(dbpath, schema)
 }
 
-// NewSQLClinet constructs a new SQL db client and connects to the database
-func NewSQLClinet(config *SQLConfig) (*SQLClient, error) {
+// NewSQLClient constructs a new SQL db client and connects to the database
+func NewSQLClient(config *SQLConfig) (*SQLClient, error) {
 	logger := logger{}
 	l, err := zap.NewProduction()
 	if err != nil {
@@ -198,7 +194,7 @@ func (c *SQLClient) InsertPlayers(players []*Player) error {
 	updatedSQL := sqlString[0 : len(sqlString)-1]
 	var upsertSQL string
 	if c.sqlType != "sqlite3" {
-		upsertSQL = updatedSQL + " ON DUPLICATE KEY UPDATE playerId=playerId"
+		upsertSQL = updatedSQL + " ON DUPLICATE KEY UPDATE playerID=playerID, nameFirst=nameFirst"
 	} else {
 		upsertSQL = updatedSQL
 	}

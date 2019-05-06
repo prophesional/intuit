@@ -23,7 +23,7 @@ spec:
       restartPolicy: Always
       containers:
         - name: intuit-interview
-          image: 514200551837.dkr.ecr.us-west-1.amazonaws.com/interviews/intuit:1.7
+          image: 514200551837.dkr.ecr.us-west-1.amazonaws.com/interviews/intuit:1.8
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

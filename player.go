@@ -37,8 +37,8 @@ func (p Player) MarshalJSON() ([]byte, error) {
 	birthY, birthM, birthD := p.getBirthDates()
 	return json.Marshal(
 		&struct {
-			PlayerID     string `json:"playerId"`
-			BirthDate    *int
+			PlayerID     string `json:"playerID"`
+			BirthDay     *int
 			BirthYear    *int
 			BirthMonth   *int
 			BirthCountry string
@@ -63,7 +63,7 @@ func (p Player) MarshalJSON() ([]byte, error) {
 			BbrefID      string
 		}{
 			PlayerID:     p.PlayerID,
-			BirthDate:    birthD,
+			BirthDay:     birthD,
 			BirthYear:    birthY,
 			BirthMonth:   birthM,
 			BirthCountry: p.BirthCountry,
