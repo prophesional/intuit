@@ -1,0 +1,26 @@
+[
+	{
+	"playerId": "aardsda010",
+        "BirthDate": "1981-12-27T12:00:00Z00:00",
+	"BirthCountry": "USA",
+	"BirthState": "CO",	
+	"BirthCity": "Denver",
+	"DeathDate": null,
+	"DeathYear": null,
+	"DeathMonth": null,
+	"DeathCountry": null,
+	"DeathState": null,
+	"DeathCity": null,
+	"NameFirst": "David",
+	"NameLast": "Aardsma",
+	"NameGiven": "David Allan",
+	"Weight": 215,
+	"Height": 75,
+	"Bats": "R",
+	"Throws": "R",
+	"Debut": "2004-04-06",
+	"FinalGame": "2015-08-23",
+	"RetroID": "aardd0010",
+	"BbrefID": "aardsda010"
+}
+]
