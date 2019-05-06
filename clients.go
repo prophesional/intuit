@@ -28,6 +28,10 @@ func (l *logger) logInfo(msg string) {
 	l.Info(msg)
 }
 
+type S3Client struct {
+
+}
+
 // SQLClient connects to the DB to perform operations
 type SQLClient struct {
 	*sql.DB
@@ -133,7 +137,7 @@ func NewSQLClinet(config *SQLConfig) (*SQLClient, error) {
 
 // GetPlayerById returns a player object from the db based on the playerId
 func (c *SQLClient) GetPlayerById(id string) (*Player, error) {
-	row, err := c.Query("SELECT * from Players where playerId  = ?", id)
+	row, err := c.Query("SELECT * from players where playerId  = ?", id)
 	if row == nil {
 		return nil, nil
 	}
@@ -151,7 +155,7 @@ func (c *SQLClient) GetPlayerById(id string) (*Player, error) {
 // GetAllPlayers returns all players currently in the database
 func (c *SQLClient) GetAllPlayers() ([]*Player, error) {
 	var players []*Player
-	rows, err := c.Query("SELECT * from Players")
+	rows, err := c.Query("SELECT * from players")
 
 	if err != nil {
 		c.logError(err, "Error executing select statement for user id")
@@ -172,7 +176,7 @@ func (c *SQLClient) GetAllPlayers() ([]*Player, error) {
 // InsertPlayers inserts a batch of players into the Db
 func (c *SQLClient) InsertPlayers(players []*Player) error {
 	args := []interface{}{}
-	sqlString := `INSERT into Players (PlayerID,BirthDate,BirthCountry,BirthState,BirthCity,DeathDate,DeathCountry,DeathState,DeathCity,NameFirst, 
+	sqlString := `INSERT into players (PlayerID,BirthDate,BirthCountry,BirthState,BirthCity,DeathDate,DeathCountry,DeathState,DeathCity,NameFirst, 
 				 NameLast,NameGiven,Weight,Height,Bats,Throws,Debut,FinalGame,RetroID,BbrefID ) VALUES `
 
 	for _, player := range players {

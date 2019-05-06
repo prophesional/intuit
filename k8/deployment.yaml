@@ -1,0 +1,37 @@
+# Deployment
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: intuit-interview-development
+  name: intuit-interview-development-deployment
+  labels:
+    app: intuit-interview
+    release: intuit-interview
+spec:
+  replicas: 4
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: intuit-interview
+        release: intuit-interview
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: intuit-interview
+          image: 514200551837.dkr.ecr.us-west-1.amazonaws.com/interviews/intuit:1.7
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+              name: http
+          env:
+            - name: DB_DATABASE_SECRET_KEY
+              value: intuit-interview
+            - name: AWS_REGION
+              value: us-west-2
+            - name: DB_DATABASE_TYPE
+              value: mysql

@@ -22,7 +22,4 @@
       </profile-state>
     </entry>
   </component>
-  <component name="TerminalProjectOptionsProvider">
-    <option name="myStartingDirectory" value="$USER_HOME$/gitrepo/src/github.com/tunein" />
-  </component>
 </project>
